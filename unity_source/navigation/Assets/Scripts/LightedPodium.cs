@@ -8,28 +8,46 @@ public class LightedPodium : MonoBehaviour
 	const float CENTER_LIGHT_MAX = 10.5f;
 	const float SIDE_LIGHT_MIN = 0f;
 	const float SIDE_LIGHT_MAX = 5f;
+	const float BRIGHTEN = 0.15f;
+	
 	public Light centerLight;
 	public Light leftLight;
 	public Light rightLight;
 	public Light frontLight;
 	private float intensity = 0f;
-	
 	private static LightedPodium targetedPodium = null;
+	public GameObject label;
+	private Color LABEL_OFF_COLOR = new Color(0,1,1,0.5f);
+	private Color LABEL_ON_COLOR = new Color(1,1,1,0.5f);
 
 	// Use this for initialization
 	void Start ()
 	{
+		TextMeshCast(label).color = LABEL_OFF_COLOR;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (targetedPodium == this) {
-			intensity += 0.5f;
+		
+		TextMeshCast(label).color = LABEL_OFF_COLOR;
+		if (LeapManager.PodiumLocked (this)) {
+			
+		TextMeshCast(label).color = LABEL_ON_COLOR;
+			intensity = 20f;
+		} else if (LeapManager.PodiumLocked()){
+			intensity*= 0.9f; // some other podium locked. 
+		} else if  (targetedPodium == this && intensity < 20f) {
+			intensity += BRIGHTEN;
 		} else if (intensity > 0) {
 			intensity *= 0.95f;
 		} else {
 			intensity = 0;
+		}
+		
+		if (intensity > 15){
+			LeapManager.lockPodium(this);
+			intensity = 20f;
 		}
 		/*	if (centerLight == null) return;
 		if (Mathf.RoundToInt(Time.time * 10 % 10) > 5) {
@@ -57,6 +75,10 @@ public class LightedPodium : MonoBehaviour
 			}
 		
 		}
+	}
+	
+	public static TextMesh TextMeshCast (GameObject g) {
+		return (TextMesh) g.GetComponent("TextMesh");
 	}
 	
 	private float CENTER_LIGHT_RANGE ()

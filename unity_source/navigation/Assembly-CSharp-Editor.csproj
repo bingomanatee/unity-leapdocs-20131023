@@ -54,6 +54,9 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\FastShadows\Shaders\FS_ShadowShader.shader" />
+ <Reference Include="Assets\Plugins\LeapCSharp.NET3.5">
+ <HintPath>Assets\Plugins\LeapCSharp.NET3.5.dll</HintPath>
+ </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -65,9 +68,6 @@
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions">
  <HintPath>\Applications\Unity\Unity.app\Contents\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Plugins\LeapCSharp.NET3.5">
- <HintPath>Assets\Plugins\LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

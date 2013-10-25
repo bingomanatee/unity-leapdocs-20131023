@@ -6,10 +6,12 @@ public class LeapManager : MonoBehaviour
 {
 	public GameObject cursor;
 	private Controller leapController;
+	private static LeapManager manager;
+	private static LightedPodium lockedPodium = null;
 	// Use this for initialization
 	void Start ()
 	{
-	
+		manager = this;
 	}
 	
 	// Update is called once per frame
@@ -18,6 +20,25 @@ public class LeapManager : MonoBehaviour
 		MoveCursor ();
 		
 		HighlightCursorTarget();
+	}
+	
+	public static bool PodiumLocked(LightedPodium podium){
+		return podium == lockedPodium;
+	}
+	
+	public static bool PodiumLocked(){
+		return lockedPodium != null;
+	}
+	
+	public static void lockPodium (LightedPodium podium){
+		
+		if (!lockedPodium ){ // must unlock first
+			lockedPodium = podium;
+		}
+	}
+	
+	public static void unlockPodium(){
+		lockedPodium = null;
 	}
 	
 	private string CleanRots (Finger finger)

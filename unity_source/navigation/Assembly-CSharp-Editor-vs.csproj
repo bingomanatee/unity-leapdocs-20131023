@@ -57,6 +57,9 @@
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
+ <Reference Include="Assets\Plugins\LeapCSharp.NET3.5">
+ <HintPath>Assets\Plugins\LeapCSharp.NET3.5.dll</HintPath>
+ </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -68,9 +71,6 @@
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions">
  <HintPath>\Applications\Unity\Unity.app\Contents\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Plugins\LeapCSharp.NET3.5">
- <HintPath>Assets\Plugins\LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
