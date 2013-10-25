@@ -1,0 +1,10 @@
+{
+    "routes": {
+        "get": "/"
+    },
+    "static": {
+        "unity": "/unity/home",
+        "js": "/js/home",
+        "css": "/css/home"
+    }
+}

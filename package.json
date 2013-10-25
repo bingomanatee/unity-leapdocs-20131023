@@ -1,0 +1,25 @@
+{
+  "name": "unity-leapdocs-20131023",
+  "version": "0.0.1",
+  "description": "A unity enabled unit documentation site",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:unity-leapdocs-20131023.git"
+  },
+  "keywords": [
+    "unity",
+    "leapmotion",
+    "leap"
+  ],
+  "author": "Dave Eddelhart",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "ejs": "~0.8.4",
+    "express": "~3.4.3",
+    "pg": "~2.8.2"
+  }
+}
