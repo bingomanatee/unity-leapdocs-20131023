@@ -5,7 +5,7 @@ public class LightedPodium : MonoBehaviour
 {
 	
 	const float CENTER_LIGHT_MIN = 0.125f;
-	const float CENTER_LIGHT_MAX = 10.5f;
+	const float CENTER_LIGHT_MAX = 3.5f;
 	const float SIDE_LIGHT_MIN = 0f;
 	const float SIDE_LIGHT_MAX = 5f;
 	const float BRIGHTEN = 0.15f;
@@ -17,25 +17,37 @@ public class LightedPodium : MonoBehaviour
 	private float intensity = 0f;
 	private static LightedPodium targetedPodium = null;
 	public GameObject label;
-	private Color LABEL_OFF_COLOR = new Color(0,1,1,0.5f);
+	private Color LABEL_OFF_COLOR = new Color(0.25f, 0.25f, 0.25f, 0.5f);
 	private Color LABEL_ON_COLOR = new Color(1,1,1,0.5f);
+	public string messageWhenLocked = "podia clicked";
 
 	// Use this for initialization
 	void Start ()
 	{
 		TextMeshCast(label).color = LABEL_OFF_COLOR;
+				if (centerLight) {
+			centerLight.intensity = CENTER_LIGHT_MAX;
+		}
+		
+		if (leftLight) {
+			leftLight.intensity = SIDE_LIGHT_MAX;
+	
+			if (rightLight) {		
+				rightLight.intensity = leftLight.intensity;
+			}
+		
+		}
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
 		TextMeshCast(label).color = LABEL_OFF_COLOR;
-		if (LeapManager.PodiumLocked (this)) {
+		if (LeapManagerWeb.PodiumLocked (this)) {
 			
 		TextMeshCast(label).color = LABEL_ON_COLOR;
 			intensity = 20f;
-		} else if (LeapManager.PodiumLocked()){
+		} else if (LeapManagerWeb.PodiumLocked()){
 			intensity*= 0.9f; // some other podium locked. 
 		} else if  (targetedPodium == this && intensity < 20f) {
 			intensity += BRIGHTEN;
@@ -46,10 +58,12 @@ public class LightedPodium : MonoBehaviour
 		}
 		
 		if (intensity > 15){
-			LeapManager.lockPodium(this);
+			LeapManagerWeb.lockPodium(this);
 			intensity = 20f;
 		}
-		/*	if (centerLight == null) return;
+		/*	
+		 * for now ignoring 
+		 * if (centerLight == null) return;
 		if (Mathf.RoundToInt(Time.time * 10 % 10) > 5) {
 			centerLight.intensity = CENTER_LIGHT_MAX;
 		} else {

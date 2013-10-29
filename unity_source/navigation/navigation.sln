@@ -9,6 +9,8 @@ Project("{FD9160BB-D656-F75A-B74E-8935E4330D9E}") = "navigation", "Assembly-CSha
 EndProject
 Project("{FD9160BB-D656-F75A-B74E-8935E4330D9E}") = "navigation", "Assembly-UnityScript-firstpass.unityproj", "{1DEEF447-5770-D0F6-61D6-BFA300B73A13}"
 EndProject
+Project("{FD9160BB-D656-F75A-B74E-8935E4330D9E}") = "navigation", "Assembly-UnityScript-Editor.unityproj", "{0ADFEF5F-F6A9-3F9B-B0D5-D10B84CE97CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,15 @@ Global
 		{1DEEF447-5770-D0F6-61D6-BFA300B73A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DEEF447-5770-D0F6-61D6-BFA300B73A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DEEF447-5770-D0F6-61D6-BFA300B73A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADFEF5F-F6A9-3F9B-B0D5-D10B84CE97CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADFEF5F-F6A9-3F9B-B0D5-D10B84CE97CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADFEF5F-F6A9-3F9B-B0D5-D10B84CE97CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADFEF5F-F6A9-3F9B-B0D5-D10B84CE97CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																GlobalSection(MonoDevelopProperties) = preSolution
+																																GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

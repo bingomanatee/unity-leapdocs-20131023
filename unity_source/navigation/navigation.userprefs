@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PodiaTarget.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../menus/Assets/Scripts/TabMenu.cs">
     <Files>
-      <File FileName="../../../../menus/Assets/Scripts/TabMenu.cs" Line="67" Column="26" />
-      <File FileName="Assets/Scripts/CursorScript.cs" Line="7" Column="29" />
-      <File FileName="Assets/Scripts/LeapManager.cs" Line="42" Column="20" />
-      <File FileName="Assets/Scripts/PodiaTarget.cs" Line="8" Column="2" />
+      <File FileName="../../../menus/Assets/Scripts/TabMenu.cs" Line="67" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
