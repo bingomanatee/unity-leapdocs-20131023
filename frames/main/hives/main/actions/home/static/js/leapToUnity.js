@@ -8,8 +8,11 @@
         console.log('connection made');
     });
     var errr = false;
+    var startTime = new Date().getTime();
+    var incTime = startTime;
+    var sps = 0;
     controller.on('frame', function (frame) {
-        if (errr) return;
+        if (unity_working || errr) return;
         if (frame.valid) {
             var out = {hands: []}
 
@@ -27,7 +30,7 @@
                             out_hand.push(stp);
                         }
                     }
-                    if (out_hand.length){
+                    if (out_hand.length) {
 
                         out.hands.push(out_hand);
                     }
@@ -35,15 +38,23 @@
             }
             if (!out.hands.length) return;
 
-            try{
+            try {
                 var ib = frame.interactionBox;
 
                 out.width = ib.width;
                 out.height = ib.height;
                 out.depth = ib.depth;
+                var send = new Date();
+             //   console.log('sending at ', send.getTime() - start, 'ms');
+                ++sps;
+                if (send.getTime() > (incTime + 1000)){
+                    console.log(sps, 'sends per second');
+                    incTime = send.getTime();
+                    sps = 0;
+                }
 
                 SaySomethingToUnity(JSON.stringify(out));
-            } catch(e){
+            } catch (e) {
                 console.log('error:', out, e);
                 errr = e;
             }

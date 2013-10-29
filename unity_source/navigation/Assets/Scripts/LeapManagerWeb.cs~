@@ -42,6 +42,11 @@ public class LeapManagerWeb : MonoBehaviour
 		
 		HighlightCursorTarget ();
 			
+		BringUpHouseLights ();
+	}
+	
+	private void BringUpHouseLights ()
+	{
 		if (LightCast (ceilingLight).intensity < CEILING_LIGHT_MAX_INTENSITY) {
 			LightCast (ceilingLight).intensity += LIGHT_GROW;
 		}
@@ -121,7 +126,7 @@ public class LeapManagerWeb : MonoBehaviour
 	
 	private void JSONNumber (JSONObject obj, string context)
 	{
-		TellWeb ("NUMBER context: " + context);
+		//	TellWeb ("NUMBER context: " + context);
 		
 		if (context == "width") {
 			IB_WIDTH = obj.n;
@@ -130,7 +135,7 @@ public class LeapManagerWeb : MonoBehaviour
 		} else if (context == "depth") {
 			IB_DEPTH = obj.n;
 		} else {	
-			TellWeb ("finger value: " + context);
+			//	TellWeb ("finger value: " + context);
 			switch (finger_count) {
 			case 0:
 				current_finger.x = obj.n;
@@ -150,7 +155,7 @@ public class LeapManagerWeb : MonoBehaviour
 			++finger_count;
 		}
 
-	//	Debug.Log (obj.n);
+		//	Debug.Log (obj.n);
 	}
 
 	public void ListenWeb (string s)
@@ -160,33 +165,35 @@ public class LeapManagerWeb : MonoBehaviour
 			finger_count = 0;
 			JSONObject j = new JSONObject (s);
 			accessData (j, "root");
-			TellWeb (fingers.Count.ToString () + " fingers found");
+			//TellWeb (fingers.Count.ToString () + " fingers found");
 			
-			TellWeb ("Height: " + IB_HEIGHT.ToString ());
-			TellWeb ("Width: " + IB_WIDTH.ToString ());
-			TellWeb ("Depth: " + IB_DEPTH.ToString ());
+			//	TellWeb ("Height: " + IB_HEIGHT.ToString ());
+			//	TellWeb ("Width: " + IB_WIDTH.ToString ());
+			//	TellWeb ("Depth: " + IB_DEPTH.ToString ());
 		} catch (UnityException ex) {
 			TellWeb ("OOPS!" + ex.ToString ());
 		}
 		ProcessFingers ();
 	}
 	
-	void ProcessFingers(){
+	void ProcessFingers ()
+	{
 		
 		if (fingers.Count < 1) {
 			return;
 		}
 		
-		TellWeb("processing fingers" + finger_count.ToString());
-		Vector3 nearestFinger = fingers[0];
+		// TellWeb("processing fingers" + finger_count.ToString());
+		Vector3 nearestFinger = fingers [0];
 		
-		foreach(Vector3 finger in fingers){
-			if ((nearestFinger.z < finger.z)){
+		foreach (Vector3 finger in fingers) {
+			if ((nearestFinger.z < finger.z)) {
 				nearestFinger = finger;
 			}
 		}
-		Debug.Log ("moving cursor to " + nearestFinger.ToString());
-		CursorScript.Cast (cursor).MoveByFinger(nearestFinger, new Vector3(IB_WIDTH, IB_HEIGHT, IB_DEPTH));
+		// Debug.Log ("moving cursor to " + nearestFinger.ToString());
+		CursorScript.Cast (cursor).MoveByFinger (nearestFinger, new Vector3 (IB_WIDTH, IB_HEIGHT, IB_DEPTH));
+		TellWeb ("frame done");
 	}
 	
 	public static Light LightCast (GameObject gobj)
@@ -218,7 +225,14 @@ public class LeapManagerWeb : MonoBehaviour
 	{
 		
 		if (CursorScript.Cast (cursor).myTarget != null) {
-			PodiaTarget.Cast (CursorScript.Cast (cursor).myTarget).Target ();
+			PodiaTarget target = PodiaTarget.Cast (CursorScript.Cast (cursor).myTarget);
+			target.Target();
+			LightedPodium targetedPodium = LightedPodium.Cast(target.podium);
+			if (target != null){
+				TellWeb("Targeting " + targetedPodium.LabelText());
+			}
+		} else {
+			LightedPodium.targetedPodium = null;
 		}
 		
 	}

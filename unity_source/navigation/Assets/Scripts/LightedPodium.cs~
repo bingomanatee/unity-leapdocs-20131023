@@ -9,90 +9,109 @@ public class LightedPodium : MonoBehaviour
 	const float SIDE_LIGHT_MIN = 0f;
 	const float SIDE_LIGHT_MAX = 5f;
 	const float BRIGHTEN = 0.15f;
-	
+	const float LOCK_TIME = 1.5f;
+	const float MAX_INTENSITY = 15f;
 	public Light centerLight;
 	public Light leftLight;
 	public Light rightLight;
 	public Light frontLight;
 	private float intensity = 0f;
-	private static LightedPodium targetedPodium = null;
+	public static LightedPodium targetedPodium = null;
 	public GameObject label;
-	private Color LABEL_OFF_COLOR = new Color(0.25f, 0.25f, 0.25f, 0.5f);
-	private Color LABEL_ON_COLOR = new Color(1,1,1,0.5f);
+	private Color LABEL_OFF_COLOR = new Color (0.25f, 0.25f, 0.25f, 0.5f);
+	private Color LABEL_ON_COLOR = new Color (1, 1, 1, 0.5f);
 	public string messageWhenLocked = "podia clicked";
-
+	private float timeOfFirstTarget = 0;
+	private bool isTargeted = false;
 	// Use this for initialization
 	void Start ()
 	{
-		TextMeshCast(label).color = LABEL_OFF_COLOR;
-				if (centerLight) {
-			centerLight.intensity = CENTER_LIGHT_MAX;
-		}
+		isTargeted = false;
+		TextMeshCast (label).color = LABEL_OFF_COLOR;
 		
-		if (leftLight) {
-			leftLight.intensity = SIDE_LIGHT_MAX;
-	
-			if (rightLight) {		
-				rightLight.intensity = leftLight.intensity;
-			}
-		
-		}
+		centerLight.intensity = CENTER_LIGHT_MAX;
+		leftLight.intensity = SIDE_LIGHT_MAX;
+		rightLight.intensity = leftLight.intensity;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		TextMeshCast(label).color = LABEL_OFF_COLOR;
-		if (LeapManager.PodiumLocked (this)) {
+		if (LeapManagerWeb.PodiumLocked ()) { // any podium is locked
+			return;
+		} else if (targetedPodium == this) { // this podium is targted
 			
-		TextMeshCast(label).color = LABEL_ON_COLOR;
-			intensity = 20f;
-		} else if (LeapManager.PodiumLocked()){
-			intensity*= 0.9f; // some other podium locked. 
-		} else if  (targetedPodium == this && intensity < 20f) {
-			intensity += BRIGHTEN;
-		} else if (intensity > 0) {
+			if (isTargeted == false) { // first time targted
+				LeapManagerWeb.TellWeb(Time.time.ToString() + " targeting podium " + LabelText());
+				StartLighting ();
+			} else if (TargetedTime () > LOCK_TIME) { // last time targeted
+				LeapManagerWeb.TellWeb(Time.time.ToString() + " locking podium " + LabelText());
+				Lock ();
+			} else { // continue to light
+				Brighten();
+			}
+			
+		} else { // this podium is not targeted
+			
+			if (isTargeted == true) {
+				LeapManagerWeb.TellWeb (Time.time.ToString() + " unfocusing " + LabelText());
+				// was targeted
+				TextMeshCast (label).color = LABEL_OFF_COLOR;
+				isTargeted = false;
+			}
+			
+			Dim ();
+		}
+	}
+	
+	public string LabelText(){
+		return ((TextMesh) this.label.GetComponent("TextMesh")).text;
+	}
+	
+	private void Brighten(){
+		intensity = MAX_INTENSITY * Mathf.InverseLerp(timeOfFirstTarget, timeOfFirstTarget + LOCK_TIME, Time.time);
+		AdjustLightIntensity();
+	}
+	
+	private float TargetedTime ()
+	{
+		return Time.time - timeOfFirstTarget;	
+	}
+	
+	private void Dim ()
+	{
+		if (intensity > 0.001) {
 			intensity *= 0.95f;
 		} else {
 			intensity = 0;
 		}
-		
-		if (intensity > 15){
-			LeapManager.lockPodium(this);
-			intensity = 20f;
-		}
-		/*	
-		 * for now ignoring 
-		 * if (centerLight == null) return;
-		if (Mathf.RoundToInt(Time.time * 10 % 10) > 5) {
-			centerLight.intensity = CENTER_LIGHT_MAX;
-		} else {
-			centerLight.intensity = CENTER_LIGHT_MIN;
-		}
-		
-		if (leftLight == null) return;
-		if (Mathf.RoundToInt(Time.time * 20 % 10) > 5) {
-			leftLight.intensity = SIDE_LIGHT_MIN;
-		} else {
-			leftLight.intensity = SIDE_LIGHT_MAX;
-		} */
-		
-		if (centerLight) {
-			centerLight.intensity = CENTER_LIGHT_RANGE () * Mathf.Min (20f, intensity) / 20f + CENTER_LIGHT_MIN;
-		}
-		
-		if (leftLight) {
-			leftLight.intensity = SIDE_LIGHT_RANGE () * Mathf.Max (0, Mathf.Min (10f, intensity - 2)) / 10f + SIDE_LIGHT_MIN;
-	
-			if (rightLight) {		
-				rightLight.intensity = leftLight.intensity;
-			}
-		
-		}
+		AdjustLightIntensity ();
 	}
 	
-	public static TextMesh TextMeshCast (GameObject g) {
-		return (TextMesh) g.GetComponent("TextMesh");
+	private void AdjustLightIntensity ()
+	{
+		centerLight.intensity = Mathf.Lerp (CENTER_LIGHT_MIN, CENTER_LIGHT_MAX, Mathf.Min (MAX_INTENSITY, intensity) / MAX_INTENSITY);
+		leftLight.intensity = Mathf.Lerp (SIDE_LIGHT_MIN, SIDE_LIGHT_MAX, Mathf.Max (0, Mathf.Min (MAX_INTENSITY, intensity)) / MAX_INTENSITY);
+		rightLight.intensity = leftLight.intensity;
+	}
+	
+	private void StartLighting ()
+	{
+		isTargeted = true;
+		timeOfFirstTarget = Time.time;
+	}
+
+	private void Lock ()
+	{
+		LeapManagerWeb.lockPodium (this);
+		TextMeshCast (label).color = LABEL_ON_COLOR;
+		intensity = MAX_INTENSITY;
+		AdjustLightIntensity ();
+	}
+	
+	public static TextMesh TextMeshCast (GameObject g)
+	{
+		return (TextMesh)g.GetComponent ("TextMesh");
 	}
 	
 	private float CENTER_LIGHT_RANGE ()

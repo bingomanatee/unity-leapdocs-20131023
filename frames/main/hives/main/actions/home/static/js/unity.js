@@ -43,17 +43,17 @@ jQuery(function () {
     u.initPlugin(jQuery("#unityPlayer")[0], "/unity/home/unity.unity3d");
 });
 
-var MAX_MESSAGES = 100;
-
-var messages = 0;
-
-function SaySomethingToUnity(message)
-{
+var unity_working = false;
+function SaySomethingToUnity(message) {
+    unity_working = true;
     u.getUnity().SendMessage("LeapManager", "ListenWeb", message);
 }
 
-function HearSomethingFromUnity(says){
-    if (++messages < MAX_MESSAGES){
+// called by Unity engine
+function HearSomethingFromUnity(says) {
+    if (says == 'frame done') {
+        unity_working = false;
+    } else {
         console.log('unity says ', says);
     }
 }
