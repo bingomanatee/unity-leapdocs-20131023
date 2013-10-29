@@ -39,7 +39,7 @@ public class LeapManagerWeb : MonoBehaviour
 			TellWeb ("unity running");
 			time = Time.time;
 		}
-		return;
+		
 		HighlightCursorTarget ();
 			
 		if (LightCast (ceilingLight).intensity < CEILING_LIGHT_MAX_INTENSITY) {
