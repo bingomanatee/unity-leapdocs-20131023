@@ -999,3 +999,12 @@ debug [Mon Oct 28 2013 23:08:17 GMT-0700 (PDT)]  started  method: get action /ma
 debug [Mon Oct 28 2013 23:08:17 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 95  -- action /main/hives/main/actions/home
 debug [Mon Oct 28 2013 23:08:17 GMT-0700 (PDT)]  started  method: get action /main/hives/main/actions/home|handler default_get # 95   -- action /main/hives/main/actions/home
 debug [Mon Oct 28 2013 23:08:17 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 95  -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  responding to / with action /main/hives/main/actions/home (# 96) -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  started  method: get action /main/hives/main/actions/home|handler default_get # 96   -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 96  -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  started  method: get action /main/hives/main/actions/home|handler default_get # 96   -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 96  -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  started  method: get action /main/hives/main/actions/home|handler default_get # 96   -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 96  -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  started  method: get action /main/hives/main/actions/home|handler default_get # 96   -- action /main/hives/main/actions/home
+debug [Mon Oct 28 2013 23:12:55 GMT-0700 (PDT)]  completed  method: get action /main/hives/main/actions/home|handler default_get # 96  -- action /main/hives/main/actions/home
