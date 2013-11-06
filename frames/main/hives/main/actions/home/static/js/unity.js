@@ -46,13 +46,20 @@ jQuery(function () {
 var unity_working = false;
 function SaySomethingToUnity(message) {
     unity_working = true;
-    u.getUnity().SendMessage("LeapManager", "ListenWeb", message);
+    if ($('html').offset().top < 200){ // if scrolling has begun we don't send more messages from the cursor.
+        u.getUnity().SendMessage("LeapManager", "ListenWeb", message);
+    }
 }
 
 // called by Unity engine
 function HearSomethingFromUnity(says) {
     if (says == 'frame done') {
         unity_working = false;
+    } else if (/^GO/.test(says)){
+        if (GoSection){
+            controller.disconnect();
+            GoSection(says.replace(/^GO /, ''));
+        }
     } else {
         console.log('unity says ', says);
     }

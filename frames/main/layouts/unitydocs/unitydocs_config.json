@@ -1,0 +1,18 @@
+{
+    "name": "unitydocs",
+    "static": {
+        "/img": "/img/unitydocs_layout",
+        "/css": "/css/unitydocs_layout",
+        "/js": "/js/unitydocs_layout"
+    },
+    "javascript": [
+        {
+            "url": "/js/unitydocs_layout/vendor/jquery-1.10.2.min.js",
+            "context": "foot"
+        },
+        {
+            "url": "/js/unitydocs_layout/vendor/bootstrap.js",
+            "context": "foot"
+        }
+    ]
+}

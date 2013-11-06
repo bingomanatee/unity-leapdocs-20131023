@@ -1,0 +1,11 @@
+{
+    "title": "Developer Guide",
+    "manifest": [
+        "developer_guide.md",
+        {
+            "type": "table_of_contents",
+            "display": "full"
+        },
+        "instantiation.md"
+    ]
+}

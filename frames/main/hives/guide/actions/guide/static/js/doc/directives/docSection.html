@@ -1,0 +1,14 @@
+<h3>{{section_item.type}} {{ section_item.title }}</h3>
+<div ng-repeat="manifest_item in section_item.manifest">
+    <div ng-model="manifest_item" manifest=""/>
+</div>
+<div ng-switch="section_item.type">
+    <div class="row-fluid" ng-switch-when="class">
+        <div class="span6" properties props="section_item.properties">
+
+        </div>
+        <div class="span6" methods methodlist="section_item.methods" sectionitem="section_item">
+        </div>
+    </div>
+    <!-- end property/class list -->
+</div>

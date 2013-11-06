@@ -1,0 +1,7 @@
+{
+    "title": "Getting Frame Data from your Leap Motion controller" ,
+    "menu_title": "Getting Data",
+    "manifest": [
+        "getting_data.md"
+    ]
+}

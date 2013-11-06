@@ -18,6 +18,11 @@ public class LeapManagerWeb : MonoBehaviour
 	private Vector3 current_finger = new Vector3 (0, 0, 0);
 	private float IB_DEPTH = 0, IB_WIDTH = 0, IB_HEIGHT = 0;
 	
+	private const float GO_PAUSE = 0.25f;
+	
+	private static float goTime = 0;
+	public static string goTo = "";
+	
 	void Start ()
 	{
 		CEILING_LIGHT_MAX_INTENSITY = LightCast (ceilingLight).intensity;
@@ -43,6 +48,18 @@ public class LeapManagerWeb : MonoBehaviour
 		HighlightCursorTarget ();
 			
 		BringUpHouseLights ();
+		
+		if(goTime > 0 && (Time.time - goTime > GO_PAUSE)){
+			TellWeb("GO " + goTo);
+			goTime = 0;
+			lockedPodium = null;
+			LightedPodium.targetedPodium = null;
+		}
+	}
+	
+	public static void Go(string gt){
+		goTo = gt;
+		goTime = Time.time;
 	}
 	
 	private void BringUpHouseLights ()
@@ -229,7 +246,7 @@ public class LeapManagerWeb : MonoBehaviour
 			target.Target();
 			LightedPodium targetedPodium = LightedPodium.Cast(target.podium);
 			if (target != null){
-				TellWeb("Targeting " + targetedPodium.LabelText());
+				//TellWeb("Targeting " + targetedPodium.LabelText());
 			}
 		} else {
 			LightedPodium.targetedPodium = null;

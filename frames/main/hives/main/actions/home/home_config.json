@@ -1,4 +1,6 @@
 {
+    "layout_name": "unitydocs",
+
     "static": {
         "js": "/js/home",
         "css": "/css/home",
@@ -7,5 +9,82 @@
 
     "routes": {
         "get": "/"
-    }
+    },
+
+    "javascript": [
+        {
+            "url": "/js/bootstrap_layout/vendor/angular/angular.js",
+            "context": "head"
+        },
+
+        {
+            "url": "//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js",
+            "context": "head"
+        },
+        {
+            "url": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/app.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/argument.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/factories/docData.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/docSection.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/manifest.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/methods.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/properties.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/propExpression.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/repeatInside.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/directives/tableOfContents.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/controller.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/home/unity.js",
+            "context": "head"
+        },
+        {
+            "url": "//js.leapmotion.com/0.2.2/leap.min.js",
+            "context": "foot"
+        },
+        {
+            "url": "//js.leapmotion.com/0.2.2/leap.min.js",
+            "context": "foot"
+        },
+        {
+            "url": "/js/home/leapToUnity.js",
+            "context": "foot"
+        }
+
+    ]
 }

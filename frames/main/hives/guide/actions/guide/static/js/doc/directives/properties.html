@@ -1,0 +1,13 @@
+<h4>Properties ({{ properties.length }})</h4>
+<div ng-switch="no_properties(section_item)">
+    <table class="props-or-methods" repeat-inside="property in properties">
+        <tr>
+            <th rowspan="2">{{property.title}}</th>
+            <td><b><span prop-expression value="property"/></b></td>
+        </tr>
+        <tr>
+            <td ng-bind-html-unsafe="property.text | md"></td>
+        </tr>
+    </table>
+    <div ng-switch-when="true">(no properties)</div>
+</div>

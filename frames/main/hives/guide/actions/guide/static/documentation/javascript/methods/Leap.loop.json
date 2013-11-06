@@ -1,0 +1,7 @@
+{
+    "title": "Leap.loop(callback)",
+    "menu_title": "Leap.loop",
+    "manifest": [
+        "Leap.loop.md"
+    ]
+}

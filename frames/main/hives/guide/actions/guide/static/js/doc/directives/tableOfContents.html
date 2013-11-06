@@ -1,0 +1,11 @@
+<section ng-repeat="item in content.toc">
+    <h3>{{item.title }}</h3>
+    <ul>
+        <li ng-repeat="section in item.sections">
+            <a href="#{{ section.name }}" title="{{section.title}}">
+                <i class="icon-chevron-right"></i>
+                {{ section.menu_title }}
+            </a>
+        </li>
+    </ul>
+</section>

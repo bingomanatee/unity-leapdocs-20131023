@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class LightedPodium : MonoBehaviour
 {
 	
@@ -9,7 +10,7 @@ public class LightedPodium : MonoBehaviour
 	const float SIDE_LIGHT_MIN = 0f;
 	const float SIDE_LIGHT_MAX = 5f;
 	const float BRIGHTEN = 0.15f;
-	const float LOCK_TIME = 1.5f;
+	const float LOCK_TIME = 0.75f;
 	const float MAX_INTENSITY = 15f;
 	public Light centerLight;
 	public Light leftLight;
@@ -23,6 +24,9 @@ public class LightedPodium : MonoBehaviour
 	public string messageWhenLocked = "podia clicked";
 	private float timeOfFirstTarget = 0;
 	private bool isTargeted = false;
+	
+	[SerializeField]
+	public string goKey ="unknown";
 	// Use this for initialization
 	void Start ()
 	{
@@ -45,7 +49,8 @@ public class LightedPodium : MonoBehaviour
 				LeapManagerWeb.TellWeb(Time.time.ToString() + " targeting podium " + LabelText());
 				StartLighting ();
 			} else if (TargetedTime () > LOCK_TIME) { // last time targeted
-				LeapManagerWeb.TellWeb(Time.time.ToString() + " locking podium " + LabelText());
+				LeapManagerWeb.TellWeb("going to " + LabelText());
+				LeapManagerWeb.Go( goKey);
 				Lock ();
 			} else { // continue to light
 				Brighten();

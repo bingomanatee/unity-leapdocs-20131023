@@ -1,8 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../menus/Assets/Scripts/TabMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LeapManagerWeb.cs">
     <Files>
       <File FileName="../../../menus/Assets/Scripts/TabMenu.cs" Line="67" Column="26" />
+      <File FileName="Assets/Scripts/JSONObject.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LeapManagerWeb.cs" Line="151" Column="22" />
+      <File FileName="Assets/Scripts/CursorScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LightedPodium.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PodiaTarget.cs" Line="1" Column="1" />
+      <File FileName="Assets/Editor/RenderCubemapWizard.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

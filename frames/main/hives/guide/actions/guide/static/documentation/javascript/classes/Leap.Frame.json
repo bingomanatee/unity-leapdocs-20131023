@@ -1,0 +1,218 @@
+{     "name": "Leap.Frame", "title": "Leap.Frame", "type": "class",
+    "manifest": ["Leap.Frame.md", "Leap.Frame.id_persist.md"],
+    "properties": [
+    {
+        "name": "id",
+        "title": "id",
+        "type": "string",
+        "text": "A unique id of this Frame instance"
+    },
+    {
+        "name": "pointables",
+        "title": "pointables",
+        "type": "Leap.Pointable",
+        "array": true,
+        "text": "array of all fingers and tools from *both* hands. Can be empty."
+    },
+    {
+        "name": "fingers",
+        "title": "fingers",
+        "type": "Leap.Pointable",
+        "array": true,
+        "text": "array of all fingers from *both* hands. Can be empty."
+    },
+    {
+        "name": "tools",
+        "title": "tools",
+        "type": "Leap.Pointable",
+        "array": true,
+        "text": "array of all tools from *both* hands. Can be empty."
+    },
+    {
+        "name": "gestures",
+        "title": "gestures",
+        "type": "Leap.Gesture",
+        "array": true
+    },
+    {
+        "name": "hands",
+        "title": "hands",
+        "type": "Leap.Hand",
+        "array": true,
+        "text": "array of all hands; Can be empty -- and can contain more than two hands."
+    },
+    {
+        "name": "timestamp",
+        "title": "timestamp",
+        "type": "number",
+        "text": "microseconds since the Leap detector started"
+    },
+    {
+        "name": "valid",
+        "title": "valid",
+        "type": "boolean",
+        "text": "indicates whether the frame is valid. An invalid frame contains no tracking data  but does conform to the frame API. See [validity](#validity)"
+    },
+    {
+        "name": "Invalid",
+        "title": "Invalid",
+        "type": "Leap.Frame",
+        "text": "An invalid instance of a Leap.Frame"
+    }
+],
+    "methods": [
+        {
+            "name": "dump",
+            "title": "dump",
+            "arguments": [
+            ],
+            "returns": {
+                "type": "string"
+            },
+            "text": "returns a JSON-formatted string (*not an object*) containing all the data of the frame"
+        },
+
+        {
+            "name": "finger",
+            "title": "finger",
+            "arguments": [
+                {
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "returns": {
+                "type": "Leap.Pointable"
+            },
+            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+        },
+
+        {
+            "name": "pointable",
+            "title": "pointable",
+            "arguments": [
+                {
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "returns": {
+                "type": "Leap.Pointable"
+            },
+            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+        },
+
+        {
+            "name": "tool",
+            "title": "tool",
+            "arguments": [
+                {
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "returns": {
+                "type": "Leap.Pointable"
+            },
+            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+        },
+
+        {
+            "name": "hand",
+            "title": "hand",
+            "arguments": [
+                {
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "returns": {
+                "type": "Leap.Hand"
+            },
+            "text": " returns a hand from the hands collection Check for [validity](#validity)."
+        },
+
+        {
+            "name": "translation",
+            "title": "translation",
+            "returns": {
+                "type": "number:mm",
+                "array": true
+            },
+
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }
+            ],
+            "text": "The movement, in millimeters, of *both* hands -- that is, the movement of the average position of both hands -- since the passed-in timestamp. (invalid arguments produce an array of zeros)"
+        },
+
+        {
+            "name": "scaleFactor",
+            "title": "scaleFactor",
+            "returns": {
+                "type": "number"
+            },
+
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }
+            ],
+            "text": "The [scale factor](#scale_factor) between *both* hands since the passed-in timestamp."
+        },
+
+        {
+            "name": "rotationAngle",
+            "title": "rotationAngle",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }
+            ],
+            "returns": {
+                "type": "number:radians"
+            },
+            "text": "The angle of rotation around the rotation axis (0, 1, or 2) of *both* hands since the passed-in timestamp. The returned angle is expressed in radians measured clockwise around the rotation axis (using the right-hand rule)."
+        },
+
+        {
+            "name": "rotationAxis",
+            "title": "rotationAxis",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }
+            ],
+            "returns": {
+                "type": "number:radians",
+                "array": true
+            },
+            "text": "the information described in rotationAngle, for all three axes, of *both* hands since the passed-in timestamp"
+        },
+
+        {
+            "name": "rotationMatrix",
+            "title": "rotationMatrix",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }
+            ],
+
+            "returns": {
+                "type": "number:radians",
+                "array": true
+            },
+            "text": "The transform matrix expressing the rotation derived from the overall rotational motion, of *both* hands since the passed-in timestamp, The Leap derives frame rotation from the relative change in position and orientation of all objects detected in the field of view."
+        }
+
+    ]
+
+}
