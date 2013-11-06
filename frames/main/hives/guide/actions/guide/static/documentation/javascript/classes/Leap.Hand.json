@@ -1,0 +1,199 @@
+{
+    "name": "Leap.Hand", "title": "Leap.Hand",
+    "type": "class",
+    "manifest": ["Leap.Hand.md"],
+    "methods": [
+
+        {
+            "name": "finger",
+            "title": "finger",
+            "arguments": [
+                {
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "returns": "Leap.Pointable",
+            "text": "returns a finger from the fingers collection(see above)."
+        }
+        ,
+        {
+            "name": "pitch",
+            "title": "pitch",
+            "arguments": [],
+            "returns": "[number (-π...π) radians]",
+            "text": "Rotation around the x-axis; or, the angle between the negative z-axis and the projection of the vector onto the y-z plane. If the vector points upward, the returned angle is between 0 and pi radians (180 degrees). If it points downward, the angle is between 0 and -pi radians."
+        }
+        ,
+        {
+            "name": "roll",
+            "title": "roll",
+            "arguments": [],
+            "returns": "number (-π...π) radians",
+            "text": "rotation around the z-axis; or, the angle between the y-axis and the projection of the vector onto the x-y plane. If the vector points to the left of the y-axis, then the returned angle is between 0 and pi radians (180 degrees). If it points to the right, the angle is between 0 and -pi radians."
+        }
+        ,
+        {
+            "name": "yaw",
+            "title": "yaw",
+            "arguments": [],
+            "returns": "number (-π...π) radians",
+            "text": "rotation around the z-axis; or, the angle between the y-axis and the projection of the vector onto the x-y plane. If the vector points to the left of the y-axis, then the returned angle is between 0 and pi radians (180 degrees); if it points to the right, the angle is between 0 and -pi radians."
+        }
+        ,
+        {
+            "name": "rotationAxis",
+            "title": "rotationAxis",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                },
+                {"name": "axis",
+                    "type": "[float]"
+                }
+
+            ],
+            "returns": " [number]",
+            "text": "The transform matrix expressing the rotation derived from the change in orientation of this hand, and any associated fingers and tools, between the current frame and the specified frame. If a corresponding Hand object is not found in sinceFrame, or if either this frame or sinceFrame are invalid Frame objects, then this method returns an identity matrix."
+        }
+        ,
+        {
+            "name": "rotationAngle",
+            "title": "rotationAngle",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                },
+                {"name": "axis",
+                    "type": "[float]"
+                }
+
+            ],
+            "returns": " [number]",
+            "text": "The axis of rotation derived from the change in orientation of this hand, and any associated fingers and tools, between the current frame and the specified frame. The returned direction vector is normalized. If a corresponding Hand object is not found in sinceFrame, or if either this frame or sinceFrame are invalid Frame objects, then this method returns a zero vector."
+        }
+        ,
+        {
+            "name": "rotationMatrix",
+            "title": "rotationMatrix",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                },
+                {"name": "axis",
+                    "type": "[float]"
+                }
+
+            ],
+            "returns": "[number]",
+            "text": "returns the rotation relative to a reference Frame. If a second parameter is passed in, the angle is the reference angle to measure around.            "
+        }
+        ,
+        {
+            "name": "scaleFactor",
+            "title": "scaleFactor",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }],
+            "returns": "number: 0..?",
+            "text": "This is a \"Pinchiness factor\". scaleFactor for hands the change in the relative extent of all fingers of the hand between the reference frame and this frames.            "
+        }
+        ,
+        {
+            "name": "translation",
+            "title": "translation",
+            "arguments": [
+                {
+                    "name": "sinceFrame",
+                    "type": "Leap.Frame"
+                }],
+            "returns": "[float/mm]",
+            "text": "The relative position(movement) of the hand (palm) since the given frame, in millimeters If Leap cannot relate this hand with a hand in the passed-in frame, the scaleFactor will be 1.            "
+        }
+    ],
+    "properties": [
+        {
+            "name": "id",
+            "title": "id",
+            "type": "string",
+            "text": "Note that hand IDs unlike many other IDs in the system, are relatively consistent from frame to frame, at least in the short term. When comparing two frame.hands arrays, there is no guarantee that the hands will be in the same order, but if both frames have two hands, you can likely match up hands by comparing their ids."
+        },
+        {
+            "name": "Invalid",
+            "title": "Invalid",
+            "type": "Hand",
+            "text": "an invalid instance of a Hand."
+        },
+        {
+            "name": "direction",
+            "title": "",
+            "type": "[number] (three numbers)",
+            "text": "the direction the hand is pointing; roughly speaking, a vector from the palm to the midpoint of the fingers."
+        },
+        {
+            "name": "palmNormal",
+            "title": "",
+            "type": "[number] (three numbers)",
+            "text": "the direction the palm is pointing."
+        },
+        {
+            "name": "palmPosition",
+            "title": "",
+            "type": "[float/mm]",
+            "text": "the location of the center of the palm, in millimeters."
+        },
+        {
+            "name": "stabilizedPalmPosition",
+            "title": "",
+            "type": "[number] (three numbers)",
+            "text": "the location of the center of the palm, in millimeters -- stabilized"
+        },
+        {
+            "name": "palmVelocity",
+            "title": "",
+            "type": "[number] (three numbers -- mm/second)",
+            "text": "The rate of change of the palm position in millimeters/second."
+        },
+        {
+            "name": "sphereCenter",
+            "title": "",
+            "type": "[number] (three numbers)",
+            "text": "the center of a \"virtual sphere\" that the hand is holding; see the illustration below. \"cupping your fingers\" makes the ball smaller, and therefore, brings the sphereCenter closer to your palm."
+        },
+        {
+            "name": "fingers",
+            "title": "",
+            "type": "[Leap.Pointable]",
+            "text": "an array of the hands' Pointables which have been classified as fingers."
+        },
+        {
+            "name": "tools",
+            "title": "",
+            "type": "[Leap.Pointable]",
+            "text": "an array of the hands' Pointables which have been classified as tools."
+        },
+        {
+            "name": "pointables",
+            "title": "",
+            "type": "[Leap.Pointable]",
+            "text": "an array of all of the hands' Pointables."
+        },
+        {
+            "name": "valid",
+            "title": "",
+            "type": "boolean",
+            "text": "whether or not the hand is valid."
+        }
+    ]
+}
+
+
+
+
+
+

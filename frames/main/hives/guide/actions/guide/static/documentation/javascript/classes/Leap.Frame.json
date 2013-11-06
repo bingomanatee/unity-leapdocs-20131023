@@ -1,65 +1,65 @@
 {     "name": "Leap.Frame", "title": "Leap.Frame", "type": "class",
     "manifest": ["Leap.Frame.md", "Leap.Frame.id_persist.md"],
     "properties": [
-    {
-        "name": "id",
-        "title": "id",
-        "type": "string",
-        "text": "A unique id of this Frame instance"
-    },
-    {
-        "name": "pointables",
-        "title": "pointables",
-        "type": "Leap.Pointable",
-        "array": true,
-        "text": "array of all fingers and tools from *both* hands. Can be empty."
-    },
-    {
-        "name": "fingers",
-        "title": "fingers",
-        "type": "Leap.Pointable",
-        "array": true,
-        "text": "array of all fingers from *both* hands. Can be empty."
-    },
-    {
-        "name": "tools",
-        "title": "tools",
-        "type": "Leap.Pointable",
-        "array": true,
-        "text": "array of all tools from *both* hands. Can be empty."
-    },
-    {
-        "name": "gestures",
-        "title": "gestures",
-        "type": "Leap.Gesture",
-        "array": true
-    },
-    {
-        "name": "hands",
-        "title": "hands",
-        "type": "Leap.Hand",
-        "array": true,
-        "text": "array of all hands; Can be empty -- and can contain more than two hands."
-    },
-    {
-        "name": "timestamp",
-        "title": "timestamp",
-        "type": "number",
-        "text": "microseconds since the Leap detector started"
-    },
-    {
-        "name": "valid",
-        "title": "valid",
-        "type": "boolean",
-        "text": "indicates whether the frame is valid. An invalid frame contains no tracking data  but does conform to the frame API. See [validity](#validity)"
-    },
-    {
-        "name": "Invalid",
-        "title": "Invalid",
-        "type": "Leap.Frame",
-        "text": "An invalid instance of a Leap.Frame"
-    }
-],
+        {
+            "name": "id",
+            "title": "id",
+            "type": "string",
+            "text": "A unique id of this Frame instance"
+        },
+        {
+            "name": "pointables",
+            "title": "pointables",
+            "type": "Leap.Pointable",
+            "array": true,
+            "text": "array of all fingers and tools from *both* hands. Can be empty."
+        },
+        {
+            "name": "fingers",
+            "title": "fingers",
+            "type": "Leap.Pointable",
+            "array": true,
+            "text": "array of all fingers from *both* hands. Can be empty."
+        },
+        {
+            "name": "tools",
+            "title": "tools",
+            "type": "Leap.Pointable",
+            "array": true,
+            "text": "array of all tools from *both* hands. Can be empty."
+        },
+        {
+            "name": "gestures",
+            "title": "gestures",
+            "type": "Leap.Gesture",
+            "array": true
+        },
+        {
+            "name": "hands",
+            "title": "hands",
+            "type": "Leap.Hand",
+            "array": true,
+            "text": "array of all hands; Can be empty -- and can contain more than two hands."
+        },
+        {
+            "name": "timestamp",
+            "title": "timestamp",
+            "type": "number",
+            "text": "microseconds since the Leap detector started"
+        },
+        {
+            "name": "valid",
+            "title": "valid",
+            "type": "boolean",
+            "text": "indicates whether the frame is valid. An invalid frame contains no tracking data  but does conform to the frame API. See [validity](#validity)"
+        },
+        {
+            "name": "Invalid",
+            "title": "Invalid",
+            "type": "Leap.Frame",
+            "text": "An invalid instance of a Leap.Frame"
+        }
+    ],
     "methods": [
         {
             "name": "dump",

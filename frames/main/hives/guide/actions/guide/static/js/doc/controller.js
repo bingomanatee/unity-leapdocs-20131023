@@ -34,7 +34,9 @@
             }
         }
 
-
+            $scope.go_top = function(){
+                $window.location.hash = '#';
+            }
         console.log('dl: ', $window.location.hash);
         if (window.location.hash){
             var h = $window.location.hash;

@@ -8,10 +8,12 @@
                     <a href="#" name="{{section_item.name }}"  id="{{ section_item.name }}" ></a>
                     <div doc-section section_item="section_item">
                     </div>
-                </section>
-                <div class="row-fluid">
-                    <div class="span6 "><button>Back to top</button></div>
+                    <div class="row-fluid">
+                    <div class="span6 offset3">
+                        <button class="btn btn-info" ng-click="go_top()">Back to top</button>
+                    </div>
                 </div>
+                </section>
             </article>
         </div>
     </div>

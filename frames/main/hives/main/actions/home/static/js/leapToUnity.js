@@ -1,5 +1,5 @@
-(function () {
-    var controller = new Leap.Controller();
+(function (window) {
+    var controller = window.controller = new Leap.Controller();
     console.log('controller made', controller);
     controller.on('error', function (err) {
         console.log('leap error: ', err);
