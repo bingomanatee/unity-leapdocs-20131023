@@ -1,19 +1,24 @@
 (function () {
     var app = angular.module('leapDocApp');
 
-    app.controller('documentationItem', function ($scope, docData, $window) {
+    app.controller('documentationItem', function ($scope, $window, SectionItem) {
 
-        docData($scope);
+        console.log('location: ', $window.location);
 
-        $scope.foo = 'bar';
-        $scope.section = '';
+        var config = $window.location.pathname.split(/\//g);
+        var language = config[2];
+        var item = config[3];
 
-        $window.GoSection = function (section) {
-            $scope.$apply(function () {
-                $scope.section = section;
+        SectionItem.get(
+            { language: language, item: item },
+            function (toc_item) {
+            console.log('toc_item: ', toc_item);
+                $scope.toc_item = toc_item;
 
-            })
-        }
+                _.each(toc_item.sections, function(section, i){
+                    toc_item.sections[i] = SectionItem.getSection({language: language, item: item, section: section});
+                });
+            });
 
     });
 

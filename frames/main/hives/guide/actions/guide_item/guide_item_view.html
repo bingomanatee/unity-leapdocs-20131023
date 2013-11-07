@@ -3,26 +3,19 @@
 
     <div ng-controller="documentationItem">
         <div class="api-guide">
-            <article ng-repeat="toc_item in content.toc">
-                <section ng-repeat="section_item in toc_item.sections | filter:active_section()">
-                    <a href="#" name="{{section_item.name }}"  id="{{ section_item.name }}" ></a>
-                    <div doc-section section_item="section_item">
+            <article>
+                <section ng-repeat="section_item in toc_item.sections">
+                    <div doc-section>
+
                     </div>
                     <div class="row-fluid">
-                    <div class="span6 offset3">
-                        <button class="btn btn-info" ng-click="go_top()">Back to top</button>
+
+                        <div class="span6 offset3">
+                            <button class="btn btn-info" ng-click="go_top()">Back to top</button>
+                        </div>
                     </div>
-                </div>
                 </section>
             </article>
         </div>
     </div>
 </div>
-
-<script class="javsacript">
-    $(function(){
-
-        window.section = '';
-
-    })
-</script>

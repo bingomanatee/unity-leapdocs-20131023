@@ -1,0 +1,18 @@
+{
+    "name": "blank",
+    "static": {
+        "/img": "/img/blank",
+        "/css": "/css/blank",
+        "/js": "/js/blank"
+    },
+    "javascript": [
+        {
+            "url": "/js/blank/vendor/jquery-1.10.2.min.js",
+            "context": "foot"
+        },
+        {
+            "url": "/js/blank/vendor/bootstrap.js",
+            "context": "foot"
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+/* ************ this is where you can customize your layout.*************** */
+
+/* required for top navigation based sites */
+
+html, body {
+    background-color: black;
+    color: white;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+div.content {
+    margin: auto;
+    width: 960px;
+}
+div.broken,
+div.missing {
+    margin: auto;
+    position: relative;
+    top: 50%;
+    width: 193px;
+}
+div.broken a,
+div.missing a {
+    height: 63px;
+    position: relative;
+    top: -31px;
+}
+div.broken img,
+div.missing img {
+    border-width: 0px;
+}
+div.broken {
+    display: none;
+}
+
+div#unityPlayer {
+    cursor: default;
+    height: 600px;
+    width: 960px;
+}
+
+section {
+    margin: 1em;
+    padding: 2em;
+    color: black;
+    background-color: white;
+}
+
+section table.props-or-methods {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+section table.props-or-methods td,
+section table.props-or-methods th {
+    margin: 0;
+    border: none;
+    padding: 0;
+    padding-bottom: 0.25em;
+    vertical-align: top;
+    text-align: left;
+}
+
+section table.props-or-methods th {
+    min-width: 7em;
+    text-align: right;
+    padding-right: 0;
+}

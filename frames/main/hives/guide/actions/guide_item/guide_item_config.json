@@ -3,13 +3,29 @@
         "js": "/js/guide_item"
     },
 
+    "layout_name": "blank",
+
     "routes": {
-        "get": "/guide/:section"
+        "get": "/guide_item/:language/:toc_item/:section?"
     },
 
     "javascript": [
         {
-            "url": "/js/bootstrap_layout/vendor/angular/angular.js",
+            "url": "/js/blank/vendor/jquery-1.10.2.min.js",
+            "context": "head"
+        },
+
+        {
+            "url": "/js/blank/vendor/angular/angular.js",
+            "context": "head"
+        },
+
+        {
+            "url": "/js/blank/vendor/angular/angular-resource.min.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/guide/doc/app.js",
             "context": "head"
         },
 
@@ -19,10 +35,6 @@
         },
         {
             "url": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js",
-            "context": "head"
-        },
-        {
-            "url": "/js/guide/doc/app.js",
             "context": "head"
         },
         {
@@ -64,22 +76,6 @@
         {
             "url": "/js/guide_item/item_controller.js",
             "context": "head"
-        },
-        {
-            "url": "/js/home/unity.js",
-            "context": "head"
-        },
-        {
-            "url": "//js.leapmotion.com/0.2.2/leap.min.js",
-            "context": "foot"
-        },
-        {
-            "url": "//js.leapmotion.com/0.2.2/leap.min.js",
-            "context": "foot"
-        },
-        {
-            "url": "/js/home/leapToUnity.js",
-            "context": "foot"
         }
 
     ]

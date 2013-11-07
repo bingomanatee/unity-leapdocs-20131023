@@ -1,0 +1,34 @@
+{
+    "page_title": "Leap.js API",
+
+    "toc": [
+        {
+            "title": "Overview",
+            "name": "overview",
+            "sections": [
+                "developer_guide",
+                "getting_data",
+                "units"
+
+            ]
+        },
+        {
+            "title": "Methods",
+            "name": "methods",
+            "sections": [
+                "Leap.loop"
+            ]
+        },
+        {
+            "title": "Classes",
+            "name": "classes",
+            "sections": [
+                "Leap.Frame",
+                "Leap.Hand",
+                "Leap.InteractionBox",
+                "Leap.Controller",
+                "Leap.Gesture"
+            ]
+        }
+    ]
+}
