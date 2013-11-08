@@ -21,7 +21,11 @@
         },
 
         {
-            "url": "/js/blank/vendor/angular/angular-resource.min.js",
+            "url": "/js/blank/vendor/angular/angular-resource.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/blank/vendor/angular/angular-sanitize.js",
             "context": "head"
         },
         {

@@ -27,7 +27,9 @@
     "underscore": "~1.5.2",
     "hive-loader": "0.0.2",
     "hive-component": "0.0.1-a",
-    "hive-menu": "0.0.1"
+    "hive-menu": "0.0.1",
+    "async": "~0.2.9",
+    "marked": "~0.2.10"
   },
   "devDependencies": {
     "tap": "~0.4.4"

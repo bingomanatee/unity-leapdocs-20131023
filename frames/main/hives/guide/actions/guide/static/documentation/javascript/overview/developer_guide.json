@@ -4,6 +4,7 @@
         "developer_guide.md",
         {
             "type": "table_of_contents",
+            "value": ""
             "display": "full"
         },
         "instantiation.md"

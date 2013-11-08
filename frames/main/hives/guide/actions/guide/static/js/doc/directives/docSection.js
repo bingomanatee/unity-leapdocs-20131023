@@ -2,7 +2,7 @@
 
     var app = angular.module('leapDocApp');
 
-    app.directive('docSection', function InjectingFunction() {
+    app.directive('docSection', function InjectingFunction($sce) {
         //@TODO: inject template root.
         return {
             templateUrl: '/js/guide/doc/directives/docSection.html',

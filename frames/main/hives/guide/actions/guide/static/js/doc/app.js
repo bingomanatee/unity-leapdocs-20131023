@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('guideModelService',['ngResource']).factory('SectionItem', ['$resource',
+    angular.module('guideModelService',['ngResource', 'ngSanitize']).factory('SectionItem', ['$resource',
         function ($resource) {
             return $resource('/guide/rest/:language/:item/:section', {language: '@language', item: '@item', section: '@section'}, {
                 get: {method: 'GET', isArray: false},
