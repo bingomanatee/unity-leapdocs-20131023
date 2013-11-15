@@ -52,8 +52,8 @@ public class LeapManagerWeb : MonoBehaviour
 		if(goTime > 0 && (Time.time - goTime > GO_PAUSE)){
 			TellWeb("GO " + goTo);
 			goTime = 0;
-			lockedPodium = null;
-			LightedPodium.targetedPodium = null;
+			//lockedPodium = null;
+			//LightedPodium.targetedPodium = null;
 		}
 	}
 	
@@ -177,6 +177,15 @@ public class LeapManagerWeb : MonoBehaviour
 
 	public void ListenWeb (string s)
 	{
+		
+		if (s == "stop"){
+			cursor.SetActive(false);
+			return;
+		} else if (s == "reset"){
+			lockedPodium = null;
+			cursor.SetActive (true);
+		}
+		
 		try {
 			fingers.Clear ();
 			finger_count = 0;
@@ -223,7 +232,7 @@ public class LeapManagerWeb : MonoBehaviour
 		
 		if (!lockedPodium) { // must unlock first
 			lockedPodium = podium;
-			PageMessage ("UnityDocTopic", podium.messageWhenLocked);
+		//	PageMessage ("UnityDocTopic", podium.messageWhenLocked);
 		}
 		
 	}

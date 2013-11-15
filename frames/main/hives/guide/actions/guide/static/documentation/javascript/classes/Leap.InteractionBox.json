@@ -1,0 +1,11 @@
+{
+    "name": "Leap.InteractionBox",
+    "title": "Leap.InteractionBox",
+    "type": "class",
+    "manifest": ["Leap.InteractionBox.md"],
+    "methods": [
+
+    ],
+    "properties": [
+    ]
+}

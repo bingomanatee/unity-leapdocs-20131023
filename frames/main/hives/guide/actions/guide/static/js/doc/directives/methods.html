@@ -1,5 +1,6 @@
 <h4>Methods ({{ methods.length }})</h4>
 <div ng-switch="no_methods()">
+    <div ng-switch-when="true">(no methods)</div>
     <table class="props-or-methods" repeat-inside="method in methods">
         <tr>
             <th rowspan="2">{{method.title}}</th>
@@ -8,8 +9,7 @@
             </td>
         </tr>
         <tr>
-            <td ng-bind-html-unsafe="method.text | md"></td>
+            <td ng-bind-html="method.text | md"></td>
         </tr>
     </table>
-    <div ng-switch-when="true">(no methods)</div>
 </div>

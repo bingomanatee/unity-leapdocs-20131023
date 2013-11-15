@@ -13,10 +13,14 @@
 
     "javascript": [
         {
-            "url": "/js/bootstrap_layout/vendor/angular/angular.js",
+            "url": "/js/unitydocs_layout/vendor/angular/angular.js",
             "context": "head"
         },
 
+        {
+            "url": "/js/unitydocs_layout/vendor/angular/angular-resource.js",
+            "context": "head"
+        },
         {
             "url": "//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js",
             "context": "head"
@@ -25,6 +29,7 @@
             "url": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js",
             "context": "head"
         },
+
         {
             "url": "/js/guide/doc/app.js",
             "context": "head"
@@ -66,7 +71,11 @@
             "context": "head"
         },
         {
-            "url": "/js/guide/doc/controller.js",
+            "url": "/js/blank/vendor/angular/angular-sanitize.js",
+            "context": "head"
+        },
+        {
+            "url": "/js/home/home_controller.js",
             "context": "head"
         },
         {

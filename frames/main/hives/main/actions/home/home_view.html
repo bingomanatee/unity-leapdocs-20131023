@@ -1,43 +1,43 @@
-<!-- full list of documentation -->
-<div class="doc_app" ng-app="leapDocApp">
 
-    <div ng-controller="documentation">
-        <h1>Leap Motion API Guide</h1>
-    <div class="content">
-        <div id="unityPlayer">
-            <div class="missing">
-                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
-                    <img alt="Unity Web Player. Install now!"
-                         src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63"/>
-                </a>
-            </div>
-            <div class="broken">
-                <a href="http://unity3d.com/webplayer/"
-                   title="Unity Web Player. Install now! Restart your browser after install.">
-                    <img alt="Unity Web Player. Install now! Restart your browser after install."
-                         src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63"/>
-                </a>
+
+<!-- full list of documentation -->
+
+<h1>Leap Motion API Guide</h1>
+
+
+<div ng-app="leapDocApp">
+    <div ng-controller="homePage">
+        <div class="content" ng-hide="show_me()">
+            <div id="unityPlayer">
+                <div class="missing">
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+                        <img alt="Unity Web Player. Install now!"
+                             src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63"/>
+                    </a>
+                </div>
+                <div class="broken">
+                    <a href="http://unity3d.com/webplayer/"
+                       title="Unity Web Player. Install now! Restart your browser after install.">
+                        <img alt="Unity Web Player. Install now! Restart your browser after install."
+                             src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63"/>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-        <div class="api-guide">
-            <p>Section {{section }}</p>
-            <article ng-repeat="toc_item in content.toc">
 
-                <h1>{{ toc_item.title }}</h1>
+        <div class="api-guide" ng-show="show_me()">
+            <article>
                 <section ng-repeat="section_item in toc_item.sections">
-                    <a href="#" name="{{section_item.name }}"  id="{{ section_item.name }}" ></a>
                     <div doc-section>
 
                     </div>
                     <div class="row-fluid">
 
-                    <div class="span6 offset3">
-                        <button class="btn btn-info" ng-click="go_top()">Back to top</button>
+                        <div class="span6 offset3">
+                            <button type="button" class="btn btn-info" ng-click="go_top()">Back to top</button>
+                        </div>
                     </div>
-        </div>
                 </section>
-
             </article>
         </div>
     </div>

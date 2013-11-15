@@ -6,7 +6,7 @@
             <td><b><span prop-expression value="property"/></b></td>
         </tr>
         <tr>
-            <td ng-bind-html-unsafe="property.text | md"></td>
+            <td ng-bind-html="property.text | md"></td>
         </tr>
     </table>
     <div ng-switch-when="true">(no properties)</div>

@@ -44,23 +44,36 @@ jQuery(function () {
 });
 
 var unity_working = false;
+window.gone = false;
 function SaySomethingToUnity(message) {
-    unity_working = true;
-    if ($('html').offset().top < 200){ // if scrolling has begun we don't send more messages from the cursor.
-        u.getUnity().SendMessage("LeapManager", "ListenWeb", message);
+    if (window.gone) {
+        console.log('muffling input to unity ');
+        return;
     }
+    unity_working = true;
+  //  if ($('html').offset().top < 200){ // if scrolling has begun we don't send more messages from the cursor.
+        u.getUnity().SendMessage("LeapManager", "ListenWeb", message);
+  //  }
 }
 
 // called by Unity engine
 function HearSomethingFromUnity(says) {
+    if (window.gone) {
+        unity_working = false;
+        return;
+    }
     if (says == 'frame done') {
         unity_working = false;
     } else if (/^GO/.test(says)){
         if (GoSection){
-            controller.disconnect();
+            window.gone = true;
             GoSection(says.replace(/^GO /, ''));
+            SaySomethingToUnity('off');
         }
     } else {
         console.log('unity says ', says);
     }
+}
+function UnityDocTopic(msg){
+    console.log('message: ', msg);
 }

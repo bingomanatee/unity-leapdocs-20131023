@@ -12,7 +12,7 @@
     var incTime = startTime;
     var sps = 0;
     controller.on('frame', function (frame) {
-        if (unity_working || errr) return;
+
         if (frame.valid) {
             var out = {hands: []}
 
@@ -45,9 +45,9 @@
                 out.height = ib.height;
                 out.depth = ib.depth;
                 var send = new Date();
-             //   console.log('sending at ', send.getTime() - start, 'ms');
+
                 ++sps;
-                if (send.getTime() > (incTime + 1000)){
+                if (send.getTime() > (incTime + 1000)) {
                     console.log(sps, 'sends per second');
                     incTime = send.getTime();
                     sps = 0;
@@ -61,4 +61,10 @@
         }
     });
     controller.connect();
+
+    window.GoSection = function(section){
+        console.log('go section ', section);
+        window.go_to(section);
+
+    }
 })(window);
