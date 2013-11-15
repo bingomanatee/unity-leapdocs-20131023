@@ -1,10 +1,10 @@
 <span ng-switch="expression_type()">
 
     <span ng-switch-when="array linked">
-        [<a href="{{ link() }}">{{ label() }}</a>]
+        [<a ng-click="link(link_target())">{{ label() }}</a>]
     </span>
     <span ng-switch-when="linked">
-        <a href="{{ link() }}">{{ label() }} </a>
+        <a ng-click="link(link_target())">{{ label() }} </a>
     </span>
     <span ng-switch-when="array">
         [{{ label() }}]

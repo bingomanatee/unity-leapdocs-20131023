@@ -1,9 +1,9 @@
 <span ng-switch="expression_type()" ng-class="expression_type()">
     <span ng-switch-when="anon linked">
-        <a href="link()">{{ label() }} </a>
+        <a ng-click="link(link_target())">{{ label() }} </a>
     </span>
     <span ng-switch-when="linked">
-       {{ label() }}: <a href="link()">{{ value.type }} </a>
+       {{ label() }}: <a ng-click="link(link_target())">{{ value.type }} </a>
     </span>
     <span ng-switch-when="anon">
         {{ label() }}

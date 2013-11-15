@@ -184,6 +184,7 @@ public class LeapManagerWeb : MonoBehaviour
 		} else if (s == "reset"){
 			lockedPodium = null;
 			cursor.SetActive (true);
+			return;
 		}
 		
 		try {

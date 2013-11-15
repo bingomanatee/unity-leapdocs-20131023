@@ -32,8 +32,12 @@
 
                 };
 
-                $scope.link = function(){
-                    return '#' + $scope.value.type;
+                $scope.link_target = function(){
+                    return $scope.value.type;
+                }
+
+                $scope.link = function(target){
+                   $scope.$emit('goto', target);
                 }
 
                 $scope.label = function(){

@@ -1,0 +1,69 @@
+{
+    "name": "Leap.Pointable",
+    "title": "Leap.Pointable",
+    "type": "class",
+    "manifest": ["Leap.Pointable.md"],
+    "methods": [],
+    "properties": [
+        {
+            "name": "id",
+            "title": "id",
+            "type": "string",
+            "text": "A unique identifier. Note that as fingers/pencils come into and out of view, the same finger may be 're-identified' multiple times."
+        },
+
+        {
+            "name": "Invalid",
+            "title": "Invalid",
+            "type": "Pointable",
+            "text": "an invalid instance of a Pointable"
+        },
+        {
+            "name": "length",
+            "title": "length",
+            "type": "number (mm)",
+            "text": "The estimated length of the finger or tool in millimeters; the distance from the hand to the tip of the finger; since a curled finger may be much longer than the length property, this is more like the 'reach' of the pointable."
+
+        },
+        {
+            "name": "tipPosition",
+            "title": "tipPosition",
+            "type": "number(mm)",
+            "array": true,
+            "text": "tipPosition."
+        },
+        {
+            "name": "stabilizedTipPosition",
+            "title": "stabilizedTipPosition",
+            "type": "number(mm)",
+            "array": true,
+            "text": "the distance from the Leap Detector to the tip of the finger, stabilized. In order to stabilize the position, this number may be around 25 frames behind the latest, or 0.3 seconds behind."
+        },
+        {
+            "name": "direction",
+            "title": "direction",
+            "type": "number(mm)",
+            "array": true,
+            "text": "the direction the pointer is pointing, expressed as a unit vector."
+        },
+        {
+            "name": "width",
+            "title": "width",
+            "type": "number(mm)",
+            "text": "the mean diameter of the tool. Finger fatness."
+        },
+        {
+            "name": "tool",
+            "title": "tool",
+            "type": "boolean",
+            "text": "whether the pointable is classified as a finger or a tool. Determined in part by width and length."
+        },
+
+        {
+            "name": "valid",
+            "title": "valid",
+            "type": "boolean",
+            "text": "whether the pointable is valid or not."
+        }
+    ]
+}

@@ -101,9 +101,9 @@ module.exports = function (apiary, callback) {
 
             q.drain = callback;
 
-            var items = section.manifest.map(function (value, index) {
+            var items = section.manifest ? section.manifest.map(function (value, index) {
                 return {index: index, value: value}
-            });
+            }): [];
 
             console.log('mi: %s', util.inspect(items));
             q.push(items);
