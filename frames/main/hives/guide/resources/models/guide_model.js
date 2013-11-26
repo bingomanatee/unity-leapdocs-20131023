@@ -11,7 +11,7 @@ var toc = require(path.resolve(DOCROOT, 'content.json'));
 
 var _MPT = _.template('<%= root %>/<%= language %>/<%= item %>/<%= file %>');
 
-var manifest_path = function(params){
+var manifest_path = function (params) {
     params.root = DOCROOT;
     return _MPT(params);
 }
@@ -41,6 +41,9 @@ module.exports = function (apiary, callback) {
             cb(null, item);
         },
 
+        table_of_contents: function () {
+            return require(path.resolve(DOCROOT, 'javascript/content.json'));
+        },
         /**
          * populate the manifest with referenced information.
          *
@@ -57,18 +60,18 @@ module.exports = function (apiary, callback) {
                 if (_.isString(manifest_element.value)) {
                     value = manifest_element.value;
                 } else {
-                   item_type = manifest_element.value.type;
-                    if (manifest_element.value.item_name){
+                    item_type = manifest_element.value.type;
+                    if (manifest_element.value.item_name) {
                         item_name = manifest_element.value.item_name;
                     }
-                    if (manifest_element.value.language){
+                    if (manifest_element.value.language) {
                         language = manifest_element.value.language;
                     }
 
-                   value = manifest_element.value.value;
+                    value = manifest_element.value.value;
                 }
 
-                switch (item_type){
+                switch (item_type) {
                     case 'markdown':
                         var params = {
                             file: value,
@@ -81,8 +84,8 @@ module.exports = function (apiary, callback) {
                         var mpath = manifest_path(params);
 
                         console.log('getting %s', mpath);
-                        fs.readFile(mpath, {encoding: 'utf8'}, function(err, content){
-                            if (err){
+                        fs.readFile(mpath, {encoding: 'utf8'}, function (err, content) {
+                            if (err) {
                                 console.log('error: %s', err);
                                 return done();
                             }
@@ -92,9 +95,23 @@ module.exports = function (apiary, callback) {
                         })
                         break;
 
+                    case 'image':
+                        done();
+                        break;
+
+                    case 'table_of_contents':
+                    case 'toc':
+                        section.manifest[manifest_element.index] = {
+                            type: 'toc',
+                            value: model.table_of_contents()
+                        };
+                        done();
+                        break;
+
                     default:
 
                         console.log('unknown type %s', item_type);
+                        done(new Error('cannot handle item_type ' + item_type));
                 }
 
             });
@@ -103,7 +120,7 @@ module.exports = function (apiary, callback) {
 
             var items = section.manifest ? section.manifest.map(function (value, index) {
                 return {index: index, value: value}
-            }): [];
+            }) : [];
 
             console.log('mi: %s', util.inspect(items));
             q.push(items);

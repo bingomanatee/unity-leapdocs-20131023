@@ -1,0 +1,7 @@
+{
+    "title": "Valid and Invalid function return results" ,
+    "menu_title": "Validity",
+    "manifest": [
+        "validity.md"
+    ]
+}

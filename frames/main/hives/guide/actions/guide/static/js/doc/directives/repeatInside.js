@@ -43,10 +43,10 @@ bigblind.directive("repeatInside", function(){
                     var childScope, index = 0;
                     var children = angular.element($element[0]).children();
 
-                    console.log("test output:");
-                    console.log($element);
-                    console.log($element.children());
-                    console.log(angular.element($element[0]).children());
+                //    console.log("test output:");
+                //    console.log($element);
+                //    console.log($element.children());
+                //    console.log(angular.element($element[0]).children());
 
                     for (var i=0; i < children.length; i++){
                         children[i].remove();

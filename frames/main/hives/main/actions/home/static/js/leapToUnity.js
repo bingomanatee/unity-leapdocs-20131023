@@ -48,7 +48,7 @@
 
                 ++sps;
                 if (send.getTime() > (incTime + 1000)) {
-                    console.log(sps, 'sends per second');
+              //      console.log(sps, 'sends per second');
                     incTime = send.getTime();
                     sps = 0;
                 }

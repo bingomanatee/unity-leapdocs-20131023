@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('leapDocApp');
 
-    app.controller('homePage', function ($scope, $window, SectionItem) {
+    app.controller('homePage', function ($scope, $window, SectionItem, $location) {
 
         console.log('location: ', $window.location);
 
@@ -9,8 +9,8 @@
             return !!$scope.toc_item;
         }
 
-        $scope.$on('goto', function(event, target){
-            if (/\//.test(target)){
+        $scope.$on('goto', function (event, target) {
+            if (/\//.test(target)) {
                 $scope.go_to(target);
             } else {
                 $scope.section_name = target;
@@ -18,13 +18,25 @@
             }
         });
 
+        $scope.hash = function () {
+            return $location.hash();
+        }
+
+        $scope.$on('$locationChangeSuccess', function (new_hash, loc) {
+            var path = /#([^?]+)/.exec(loc);
+            if (path) {
+                console.log('new hash: ', path);
+                $scope.go_to(path[1]);
+            }
+        })
+
         $scope.go_to = $window.go_to = function (path) {
 
-            if (path){
-                var config = path.split(/\//g);
-                $scope.language = config[2];
-                $scope.item_name = config[3];
-                $scope.section_name = config[4];
+            if (path) {
+                var config = _.compact(path.split(/\//g));
+                if (config.length) $scope.section_name = config.pop();
+                if (config.length)  $scope.item_name = config.pop();
+                if (config.length)  $scope.language = config.pop();
             }
 
             if ($scope.section_name) {
@@ -40,7 +52,7 @@
             }
         }
 
-        $scope.go_top = function(){
+        $scope.go_top = function () {
 
             $scope.toc_item = null;
             $window.SaySomethingToUnity('reset');

@@ -2,10 +2,9 @@
 
     var app = angular.module('leapDocApp');
 
-    app.directive('manifest', function InjectingFunction($http, docData) {
+    app.directive('manifest', function InjectingFunction($http, docData, $location) {
 
         function _make_table_of_contents($scope, params) {
-
         }
 
         function _set_output_data($scope, toc_item, manifest_item) {
@@ -27,31 +26,39 @@
             templateUrl: '/js/guide/doc/directives/manifest.html',
             controller: function ($scope) {
 
-                $scope.manifest_toc_class = function(sections){
-                    var count = Math.ceil(12 /sections.length);
+                $scope.go_toc_item = function(name, section){
+                    $location.path(name + '/' + section);
+                    console.log('going to ', name, section);
+                }
+
+                $scope.manifest_toc_class = function (sections) {
+                    var count = Math.ceil(12 / sections.length);
                     return 'span' + count;
                     //@TODO: insulate against rounding
                 };
+
+                console.log('manifest: ', $scope.manifest, $scope.manifest_item, $scope.manifest_item_type);
+                if ((!$scope.manifest_item) && $scope.manifest) {
+                    $scope.manifest_item = $scope.manifest;
+                }
 
                 if ($scope.manifest_item) {
                     var manifest_item = $scope.manifest_item;
 
                     if (_.isString($scope.manifest_item)) {
-                        $scope.manifest_item_type="markdown";
-
-                        var toc_item = $scope.$parent.$parent.toc_item;
-                        var section_item = $scope.$parent.section_item;
-
-                        $scope.toc_item = toc_item;
-                        $scope.section_item = section_item;
-
-                        _set_output_data($scope, toc_item, manifest_item);
+                        $scope.manifest_item_type = "markdown";
+                        $scope.manifest_output = $scope.manifest_item;
                     } else {
+                        console.log('doing a typed manifest');
                         $scope.manifest_item_type = $scope.manifest_item.type;
-                        switch ($scope.manifest_item_type){
+                        switch ($scope.manifest_item_type) {
+                            case 'toc':
                             case 'table_of_contents':
+                                $scope.manifest_output  = $scope.manifest_item.value.toc;
+                                break;
 
-                                docData($scope);
+                            case 'image':
+                                $scope.manifest_output = $scope.manifest_item.src;
                                 break;
                         }
                     }
@@ -60,7 +67,6 @@
                 }
 
 
-                $scope.manifest_output = '...';
             },
             compile: function CompilingFunction($templateElement, $templateAttributes) {
 

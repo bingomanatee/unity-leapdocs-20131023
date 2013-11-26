@@ -230,6 +230,9 @@ function htmlParser( html, handler ) {
     if ( !stack.last() || !specialElements[ stack.last() ] ) {
 
       // Comment
+      if (!html.indexOf){
+      console.log('???');
+      } else {
       if ( html.indexOf("<!--") === 0 ) {
         // comments containing -- are not allowed unless they terminate the comment
         index = html.indexOf("--", 4);
@@ -276,7 +279,7 @@ function htmlParser( html, handler ) {
 
         if (handler.chars) handler.chars( decodeEntities(text) );
       }
-
+      }
     } else {
       html = html.replace(new RegExp("(.*)<\\s*\\/\\s*" + stack.last() + "[^>]*>", 'i'),
         function(all, text){

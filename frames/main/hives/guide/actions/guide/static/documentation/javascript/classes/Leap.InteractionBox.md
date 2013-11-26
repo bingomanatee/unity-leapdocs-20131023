@@ -1,1 +1,1 @@
-The Leap InteractionBox documentation
+A representation of the "airspace" in which the Leap Motion controller can measure/see your hands and fingers. Note that the range of the interaction box may change with hardware or software advances. Use the interaction boxes' properties to scale your measurements -- don't hard code these values in your javascript.

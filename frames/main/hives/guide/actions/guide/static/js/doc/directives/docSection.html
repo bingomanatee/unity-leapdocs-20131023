@@ -1,5 +1,5 @@
 <h3>{{section_item.type}} {{ section_item.title }}</h3>
-<div ng-repeat="manifest in section_item.manifest" ng-bind-html="manifest"> </div>
+<div ng-repeat="manifest in section_item.manifest" manifest> </div>
 
 <div ng-switch="section_item.type">
     <div class="row-fluid" ng-switch-when="class">

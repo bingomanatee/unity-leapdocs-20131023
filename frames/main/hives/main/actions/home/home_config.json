@@ -22,6 +22,10 @@
             "context": "head"
         },
         {
+            "url": "/js/unitydocs_layout/vendor/angular/angular-sanitize.js",
+            "context": "head"
+        },
+        {
             "url": "//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js",
             "context": "head"
         },
@@ -71,20 +75,12 @@
             "context": "head"
         },
         {
-            "url": "/js/blank/vendor/angular/angular-sanitize.js",
-            "context": "head"
-        },
-        {
             "url": "/js/home/home_controller.js",
             "context": "head"
         },
         {
             "url": "/js/home/unity.js",
             "context": "head"
-        },
-        {
-            "url": "//js.leapmotion.com/0.2.2/leap.min.js",
-            "context": "foot"
         },
         {
             "url": "//js.leapmotion.com/0.2.2/leap.min.js",

@@ -1,17 +1,23 @@
+<p><b>MIT:</b>{{ manifest_item_type }}</p>
+
 <div ng-switch="manifest_item_type">
 
-    <div ng-switch-when="markdown" ng-bind-html-unsafe="manifest_output" />
+    <div ng-switch-when="markdown" ng-bind-html="manifest_output">
+    </div>
 
-    <div ng-switch-when="table_of_contents" class="row-fluid">
-        <div ng-class="manifest_toc_class(content.toc)" ng-repeat="section in content.toc">
-            <h2>{{ section.title }}</h2>
-            <ul>
-                <li ng-repeat="section in section.sections">
-                    <a href="#{{ section.name }}">{{ section.title }}</a>
-                </li>
-            </ul>
-        </div>
+    <div ng-switch-when="toc" class="row-fluid">
+     <div ng-repeat="toc_item in manifest_output" class="toc-section">
+         <h4>{{toc_item.title}}</h4>
+         <ul>
+             <li ng-repeat="toc_item_section in toc_item.sections">
+                 <a ng-click="go_toc_item(toc_item.name, toc_item_section)">{{ toc_item_section }}</a></li>
+         </ul>
+     </div>
 
+    </div>
+
+    <div ng-switch-when="image">
+        IMAGE
     </div>
 
     <div ng-switch-default>

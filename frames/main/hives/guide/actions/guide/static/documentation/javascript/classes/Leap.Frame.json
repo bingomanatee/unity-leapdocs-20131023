@@ -8,7 +8,7 @@
             "text": "A unique id of this Frame instance"
         },
         {
-            "name": "pointables",
+            "name": "pointable",
             "title": "pointables",
             "type": "Leap.Pointable",
             "array": true,
@@ -51,7 +51,7 @@
             "name": "valid",
             "title": "valid",
             "type": "boolean",
-            "text": "indicates whether the frame is valid. An invalid frame contains no tracking data  but does conform to the frame API. See [validity](#validity)"
+            "text": "indicates whether the frame is valid. An invalid frame contains no tracking data  but does conform to the frame API. See [validity](#/overview/validity)"
         },
         {
             "name": "Invalid",
@@ -84,7 +84,7 @@
             "returns": {
                 "type": "Leap.Pointable"
             },
-            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+            "text": "returns a finger from the fingers collection. Check for [validity](#/overview/validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
         },
 
         {
@@ -99,7 +99,7 @@
             "returns": {
                 "type": "Leap.Pointable"
             },
-            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+            "text": "returns a finger from the fingers collection. Check for [validity](#/overview/validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
         },
 
         {
@@ -114,7 +114,7 @@
             "returns": {
                 "type": "Leap.Pointable"
             },
-            "text": "returns a finger from the fingers collection. Check for [validity](#validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
+            "text": "returns a finger from the fingers collection. Check for [validity](#/overview/validity). The id [persists across frames](#Leap.Frame_pointable_persistence)."
         },
 
         {
@@ -129,7 +129,7 @@
             "returns": {
                 "type": "Leap.Hand"
             },
-            "text": " returns a hand from the hands collection Check for [validity](#validity)."
+            "text": " returns a hand from the hands collection Check for [validity](#/overview/validity)."
         },
 
         {

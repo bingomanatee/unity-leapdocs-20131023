@@ -47,7 +47,7 @@ var unity_working = false;
 window.gone = false;
 function SaySomethingToUnity(message) {
     if (window.gone) {
-        console.log('muffling input to unity ');
+      //  console.log('muffling input to unity ');
         return;
     }
     unity_working = true;

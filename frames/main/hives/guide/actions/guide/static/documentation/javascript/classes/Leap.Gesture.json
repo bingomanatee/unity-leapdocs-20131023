@@ -1,0 +1,47 @@
+{
+    "name": "Leap.Gesture",
+    "title": "Gesture",
+    "type": "class",
+    "manifest": ["Leap.Gesture.md"],
+    "methods": [
+
+    ],
+    "properties": [
+        {
+            "name": "id",
+            "title": "id",
+            "type": "number",
+            "text": "All gestures belonging to the same continuous gesture will have the same ID. Can be passed into `my_frame.gesture(my_gesture.id)` to get updated versions of a gesture."
+        },
+        {
+            "name": "type",
+            "title": "type",
+            "type": "string",
+            "text": "one of the following values: 'circle', 'swipe', 'screenTap', or 'keyTap'"
+        },
+        {
+            "name": "duration",
+            "title": "duration",
+            "type": "int",
+            "text": "the duration (in microseconds) of the gesture, as of the frame from which the gesture was retrieved."
+        },
+        {
+            "name": "state",
+            "title": "state",
+            "type": "string",
+            "text": "one of the following value: 'start', 'update' or 'stop'; where in the \"clown car o' gesture\" stream the current gesture is -- the first, the last, or somewhere in the middle. Tap gestures will always have a 'stop' state."
+        },
+        {
+            "name": "pointableIds",
+            "title": "pointableIds",
+            "type": "[string]",
+            "text": "the ids of fingers associated with this gesture (if any)"
+        },
+        {
+            "name": "handIds",
+            "title": "handIds",
+            "type": "[string]",
+            "text": "the ids of hands associated with this gesture"
+        }
+    ]
+}
